@@ -32,8 +32,6 @@ Login to MLchain:
 $ mlchain login
 ```
 
-
-
 You are now logged in and ready to rock.
 
 Ready to run your first experiment?

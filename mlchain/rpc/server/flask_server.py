@@ -1,5 +1,5 @@
 from mlchain.base.serve_model import ServeModel
-from mlchain.base.server import GunicornWrapper
+from mlchain.base.wrapper import GunicornWrapper
 from mlchain.base.log import logger
 from flask import Flask, request, jsonify, Response, send_file, render_template
 from flask_cors import CORS
