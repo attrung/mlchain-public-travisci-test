@@ -3,8 +3,8 @@
 The essential points for understanding and effectively using MLChain can be
 grouped into the following categories:
 
-- [ML Deployment](#MlModelDeploy)
-- [Model Sharing](#ModelSharing)
+- [ML Deployment](../Model Deployment/general.md)
+- [Client API](../Client/general.md)
 - [Workflow](#workflow)
 
 This document serves as an introduction to each of these categories. When
@@ -17,9 +17,13 @@ Simple Machine Learning model deployment is the central feature of ML Chain libr
 Our ServeModel function allows user to deploy their model without requiring software engineering knowledge.
 We support Flask and grpc for website hosting.
 
-## Model Sharing
-This use our client service that allows users to share their ML models to other users, along with reusing and coming 
-back to them everytime they want to redeploy their model.
+[Read More...](../Model Deployment/general.md)
+
+## Client Sharing
+This use our Client Class service that allows users to share their ML models to other users, along with reusing and coming 
+back to them every time they want to redeploy their model.
+
+[Read More...](../Client/general.md)
 
 ## Workflow
 ...

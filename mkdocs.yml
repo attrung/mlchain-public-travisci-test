@@ -11,16 +11,23 @@ pages:
         - 'Core Concepts': getstarted/core_concepts.md
         - 'Installation': getstarted/installation.md
         - 'Tutorial': getstarted/tutorial.md
-    - Serve Model: guides/serving.md
+
+    - Model Deployment:
+        -  'General': Model Deployment/general.md
+        -  'Quick Tutorial': Model Deployment/tutorial.md
+        -  'Module Overview': Model Deployment/moduleDetail.md
+        -  'Config file': Model Deployment/mlconfig.md
+
+    - Client API:
+        -  'General and Tutorial': Client/general.md
+        -  'Module Detail': Client/moduleDetail.md
+
     - Workflow:
         - 'Parallel': workflow/parallel.md
         - 'Pipeline': workflow/pipeline.md
-    - MLChain CLI:
-        - 'mlchain init': commands/init.md
-        - 'mlchain run': commands/run.md
-        - 'mlchain prepare': commands/prepare.md
-    - MLChain Config File: mlconfig.md
+
     - Need Help?: help.md
+
     # REDIRECTS:
     # To set up a redirect, add the file you want to redirect from in to the
     # list below, using this pattern:

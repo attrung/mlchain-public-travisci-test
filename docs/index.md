@@ -13,39 +13,26 @@
 
 # Mlchain Library for Python
 
-[Mlchain](https://mlchain.ml) helps AI developers to easily run, deploy and monitor AI models and Workflows without having Devops skills.
+[Mlchain](https://mlchain.ml) helps AI developers to easily run, deploy and monitor AI models and Workflows without needing software engineering experience.
 
-This Mlchain Python library lets you launch models and do many tasks with Mlchain Platform. Please sign up your account on [Mlchain](https://mlchain.ml) before working with it.
+This Mlchain Python library lets you launch models and do many tasks with Mlchain Platform. 
 
-## Contents
+[Learn more](../getstarted/core_concepts.md)
 
-- [Installation]()
-- [Quick Start]()
-- [Documentation]()
-- [Issue Tracking]()
+### Seamless AI App Deployment
 
-## Quick Start
+MLChain support you in building your own web-based AI application, where everything is pre-designed 
+for your comfort. You will be able to test your app without cumbersome software engineering work that takes 
+longer than training the data itself. 
 
-1.  Install the library:
+Try our tutorial on [Model Deployment](../Model Deployment/tutorial.md).
 
-    Install from master:
+### Sharing between clients
 
-    ```
-    $ pip install https://techainer-packages.s3-ap-southeast-1.amazonaws.com/mlchain/mlchain-0.0.4-py3-none-any.whl
-    ```
+MLChain Client allows you to also share your AI model's output with regard to developer's specific input. 
+This uses model that is directly hosted by your web-based app, so there is no need for rebuilding or 
+making cumbersome APIs.
 
-<!-- 2.  Visit [mlchain.ml](https://www.mlchain.ml/) and create a free
-    account by clicking the `SIGN UP` button.
+Try our tutorial on [Client Sharing](../Client/tutorial.md).
 
-3.  Login with the cli by typing:
-
-```
-$ mlchain login  -->
-
-```
-
-You are now logged in and ready to rock.
-
-Ready to run your first experiment?
------------------------------------
-```
+### Workflow
