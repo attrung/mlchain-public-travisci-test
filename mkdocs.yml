@@ -13,20 +13,13 @@ pages:
         - 'Tutorial': getstarted/tutorial.md
     - Serve Model: guides/serving.md
     - Workflow:
-        - 'Parallel': guides/workspace.md
-        - 'Pipeline': guides/pipeline.md
-    - Artifact:
-        - 'Mode': faqs/environments.md
-    - Environments:
-        - 'Mode': faqs/environments.md
+        - 'Parallel': workflow/parallel.md
+        - 'Pipeline': workflow/pipeline.md
     - MLChain CLI:
         - 'mlchain init': commands/init.md
         - 'mlchain run': commands/run.md
         - 'mlchain prepare': commands/prepare.md
     - MLChain Config File: mlconfig.md
-    - Examples:
-        - 'Serve model': examples/style_transfer.md
-        - 'Download data': examples/deep_corrector.md
     - Need Help?: help.md
     # REDIRECTS:
     # To set up a redirect, add the file you want to redirect from in to the
@@ -44,14 +37,6 @@ pages:
     #
     # {!redirect_message.md!}
     #
-    - "": home/using_datasets.md
-    - "": home/install.md
-    - "": home/getting_started.md
-    - "": faqs/plans_legacy.md
-    # Replaced these with the Workspace page
-    - "": getstarted/quick_start_jupyter.md
-    - "": getstarted/get_started_jupyter.md
-    - "": guides/ssh.md
 theme: material
 extra:
   # Use this to make a section open by default in the sidebar. These names have
