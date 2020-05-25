@@ -14,7 +14,7 @@ pages:
     - Serve Model: guides/serving.md
     - Workflow:
         - 'Parallel': guides/workspace.md
-        - 'Pipeline': guides/insights.md
+        - 'Pipeline': guides/pipeline.md
     - Artifact:
         - 'Mode': faqs/environments.md
     - Environments:
