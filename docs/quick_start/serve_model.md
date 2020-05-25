@@ -24,13 +24,15 @@ This Mlchain Python library lets you launch models and do many tasks with Mlchai
 - [Documentation]()
 - [Issue Tracking]()
 
+#### Installation:
 
-3.  Login with the cli by typing:
-
-```
-$ mlchain login  -->
+Login to MLchain:
 
 ```
+$ mlchain login
+```
+
+
 
 You are now logged in and ready to rock.
 

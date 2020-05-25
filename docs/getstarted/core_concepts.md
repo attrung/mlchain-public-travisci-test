@@ -3,7 +3,7 @@
 The essential points for understanding and effectively using MLChain can be
 grouped into the following categories:
 
-- [ServeModel](#servemodel)
+- [Serve Model](#servemodel)
 - [Server](#server)
 - [MLConfig](#mlconfig)
 - [Workflow](#workflow)

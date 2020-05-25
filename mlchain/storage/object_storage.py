@@ -11,7 +11,6 @@ import sys
 
 cv2 = None
 
-
 def import_cv2():
     if cv2 is None:
         import cv2 as cv

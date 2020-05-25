@@ -4,18 +4,18 @@
   </a><br>
   Deploy AI model at scale! <br>
   <a href="https://mlchain.ml/documentation/python/getting-started/" target="_blank">
-    <strong> Explore the docs » </strong>
+    <strong> Full documentation » </strong>
   </a> <br>
   <a href="https://mlchain.ml" target="_blank"> Our Website </a>
     ·
   <a href="https://github.com/techainer/examples-python" target="_blank"> Examples in Python </a>
 </p>
 
-# Mlchain Library for Python
+# MLchain
 
-[Mlchain](https://mlchain.ml) helps AI developers to easily run, deploy and monitor AI models and Workflows without having Devops skills.
-
-This Mlchain Python library lets you launch models and do many tasks with Mlchain Platform. Please sign up your account on [Mlchain](https://mlchain.ml) before working with it.
+[MLchain](https://mlchain.ml) helps AI developers to easily run, deploy, test AI models 
+and Workflows without cumbersome software engineering work. You can watch your AI model in 
+action with less than 3 lines of code!
 
 ## Contents
 
@@ -24,28 +24,23 @@ This Mlchain Python library lets you launch models and do many tasks with Mlchai
 - [Documentation]()
 - [Issue Tracking]()
 
-## Quick Start
+### 1. Installation
 
-1.  Install the library:
+In your terminal, run the following command in the terminal and install MLChain to your 
+computer.This should install ML Chain and all of its dependencies.
 
-    Install from master:
-
-    ```
     $ pip install https://techainer-packages.s3-ap-southeast-1.amazonaws.com/mlchain/mlchain-0.0.4-py3-none-any.whl
-    ```
 
-<!-- 2.  Visit [mlchain.ml](https://www.mlchain.ml/) and create a free
-    account by clicking the `SIGN UP` button.
+### 2. Quick Start
 
-3.  Login with the cli by typing:
+Access a quick tutorial [here](https://github.com/trungATtechainer/MLChain-Quick-Start).
 
-```
-$ mlchain login  -->
+### 3. Documentation
 
-```
+Access full documentation here.
 
-You are now logged in and ready to rock.
+### 4. Issue Tracking
 
-Ready to run your first experiment?
------------------------------------
-```
+
+
+
