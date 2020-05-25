@@ -1,7 +1,20 @@
-# Tutorial
+# ML Chain Quick Start Tutorial
 
-Build your first Machine Learning app using MLchain. I this quickstart tutorial we will
-use MLchain to build our first ML chain app. First, clone the quick-start repository [here]().
+Build your first Machine Learning app using MLchain. Through this quickstart tutorial we will
+use MLchain to build our first ML chain app. 
+
+## Contents
+
+- [Installation]()
+- [Building our app]()
+
+### 1. Installation
+
+First, install MLChain:
+
+    $ pip install https://techainer-packages.s3-ap-southeast-1.amazonaws.com/mlchain/mlchain-0.0.4-py3-none-any.whl
+
+Next, clone the repository.
 
 In this repository, you can find the following files:
 
@@ -13,8 +26,11 @@ In this repository, you can find the following files:
 
 The <b> model.pt </b> file contains the model we already trained using the MNIST dataset and Pytorch.
  
-The <b> app.py </b> file is where we will use to deploy our model.
+The <b> app.py </b> file is where we will use to deploy our model. You can create a new python file to follow this tutorial if you want. The app.py file can serve as a good reference point.
 
+### 2. Building our app
+
+#### a. Import the libraries
 Upon opening the app.py files, we will import the following libraries:
 
 ```python
@@ -32,7 +48,8 @@ import numpy as np
 from mlchain.base import ServeModel
 ```
 
-Next, redefine our model. This model should be defined the same as your prior model for training.
+#### b. Redefine our model
+This redefined model should be defined the same as your prior model for training.
 
 ```python
 # redefine our model
@@ -44,7 +61,9 @@ class Net(nn.Module):
         ...
 ```
 
-Next, create a model instance. This will be our main working area. 
+#### c. Create a model instance for MLChain
+
+First, create a model class. This will be our main working area. 
 
 ```python
 class Model():
@@ -54,14 +73,13 @@ class Model():
 
     def image_predict(self, img:np.ndarray):
         ...
-
 ```
 
 To begin, we download and import the current state of our model. This should be done under the <b> init() </b> function.
 
 ```python
     # define our model
-    self.model = Net()
+    self.model = Net() # same as our pre-defined model above
 
     # load model state_dict
     self.model.load_state_dict(torch.load('model.pt'))
@@ -84,6 +102,7 @@ prediction of our model. This function start with turning our img input (origina
 a PIL.Image instance. This helps our transform function defined by pytorch transform the image for our analysis.
 
 We also reshape our image into 4 dimensions tensor as the first value represents the batch_size, which is 1.
+
 ```python
     def image_predict(self, img:np.ndarray):
 
@@ -95,7 +114,7 @@ We also reshape our image into 4 dimensions tensor as the first value represents
     
         # reshape image into 4 - dimensions
         img = img.view(1, img.shape[0], img.shape[1], img.shape[2])
-```       
+```
 
 We can now add prediction and return our final result under <b> image_predict() </b>:
 ```python
@@ -111,6 +130,7 @@ We can now add prediction and return our final result under <b> image_predict() 
     return int(pred)
 ```
 
+#### d. Deploy our model
 To define and return our final result, we use MLchain's provided functions 
 including serve_model and FlaskServer to host our app.
 
@@ -122,7 +142,37 @@ model = Model()
 # serve model
 serve_model = ServeModel(model)
 
-# run model using flask
-if __name__ == '__main__':
-    from mlchain.rpc.server.flask_server import FlaskServer
-    FlaskServer(serve_model).run(port=5000, threads = 5)
+```
+
+Finally, run 
+
+    $ mlchain init 
+
+in your terminal. This create the mlconfig.yalm file. 
+Here, we will be using flask on our app.py file on our localhost, so we fix the file to accommodate our need.
+On top of these options, we can host the website anywhere we need.
+
+```python
+name: Digit-Recognizer # name of service
+entry_file: app.py # python file contains object ServeModel
+host: localhost # host service
+port: 5000 # port
+server: flask # option flask or grpc
+wrapper: None # option None or gunicorn
+cors: true
+gunicorn: # config apm-server if uses gunicorn wrapper
+timeout: 60
+keepalive: 60
+max_requests: 0
+threads: 1
+worker_class: 'gthread'
+umask: '0'
+```
+
+Testing our image return the following value. Congratulation on your first ML app using MLChain.
+
+Test Image:
+![image](http://i.imgur.com/aNIFpdQ.png)
+
+Server Response:
+![output](http://i.imgur.com/LN0xIUK.jpg)
