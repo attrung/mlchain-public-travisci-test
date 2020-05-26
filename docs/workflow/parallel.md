@@ -18,7 +18,7 @@ import time
 from client import get_num
 ```
 Next, download the data from <b> [here](https://drive.google.com/u/6/uc?id=1M6JsFwuPkTnGkPV0JOJYPjpB1tedKwsm&export=download) </b> and save into the same directory, under a folder called <b> data</b>. They contain the images that we will use
-for our digit classification task.
+for our digit classification task. This should have been satisfied if you followed the <b> [pipeline](../workflow/pipeline.md) </b> guide.
 
 After downloading the images, we create a name list of images that we want to process.
 
@@ -62,7 +62,7 @@ Total time:  48.9379518032074
 This process took us up to 49 seconds to run, which is unfavourable in most software development context.
 Now, let's see how long it will take to run with parallel.
 
-### Test 2 (run with parallel):
+### Test 2 (run with parallel)
 
 Remember to <b> comment </b> the previous code that we have written for test 1. Add the following to the <b> parallel.py </b> file:
 
@@ -96,3 +96,23 @@ test 1. This is an advantage of mlchain workflow parallel, by allowing users to
 optimize their code without having DevOps knowledge.
 
 ## Module overview:
+
+```python
+class Parallel:
+    def __init__(self, tasks:[], max_threads:int=10, max_retries:int=0, 
+                pass_fail_job:bool=False, verbose:bool=True, threading:bool=True):
+```
+
+### Variables:
+
+- tasks (list): list of tasks (or functions) that you want to be completed
+
+- max_threads (int): maximum number of threads that the computer is allowed to use (default = 10)
+
+- max_retries (int):  (default = 0)
+
+- pass_fail_job (bool):  (default = False)
+
+- verbose (bool):  (default = True)
+
+- threading (bool):  (default = True)
