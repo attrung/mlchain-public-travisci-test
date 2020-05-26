@@ -22,15 +22,16 @@ In this repository, you can find the following files:
     /root
         -> model.pt
         -> app.py
+        -> 19.png # for testing
 ```
 
 The <b> model.pt </b> file contains the model we already trained using the MNIST dataset and Pytorch.
 The model saved here is a state_dict, meaning we will have to redefine our model during 
 our tutorial.
 
-The <b> app.py </b> file is where we will use to deploy our model. 
-You can create a new python file to follow this tutorial if you want. 
-The <b> app.py </b> file can serve as a good reference point.
+The <b> app.py </b> file is where we will use to deploy our model.
+
+(Optional) For a finished tutorial for reference, find it here: https://github.com/trungATtechainer/MLChain-Full-Tutorial
 
 ### 2. Building our app
 
@@ -181,12 +182,34 @@ gunicorn: # config apm-server if uses gunicorn wrapper
 
 [(Optional) Learn more about mlconfig file](../Model Deployment/mlconfig.md)
 
-Testing our image return the following value. Congratulation on your first ML app using MLChain.
+When you're ready, run 
+
+    $ mlchain run
+    
+in your terminal. This should start a website at https://localhost:5000. Access your app
+by going to [SWAGGER] on the top left of the page. 
+
+![image](../img/Model%20Deployment/tutorial_first_page.jpg)
+
+Here you can find all the routing of your app. Click on the function that you wants to try:
+
+![image](../img/Model%20Deployment/tutorial_routing.jpg)
+
+Click try it out:
+
+![image](../img/Model%20Deployment/tutorial_try_it_out.jpg)
+
+Upload your image:
+
+![image](../img/Model%20Deployment/tutorial_upload_execute.jpg)
 
 Test Image:
-![image](http://i.imgur.com/aNIFpdQ.png)
+![image](../img/Model%20Deployment/19.png)
 
-Server Response:
-![output](http://i.imgur.com/LN0xIUK.jpg)
+This is our response: 
+
+![image](../img/Model%20Deployment/tutorial_output.jpg)
+
+ Congratulation on your first ML app using MLChain.
 
 [Check Module Detail >>](../Model Deployment/moduleDetail.md)

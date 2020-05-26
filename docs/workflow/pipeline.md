@@ -7,6 +7,9 @@ for instance, then the computer can already begin processing <i> text localizati
 
 ## Tutorial
 
+(Optional) For a finished tutorial for reference, find it here: https://github.com/trungATtechainer/MLChain-Full-Tutorial
+
+
 Let's use our get_num() function from [client.py](../Client/general.md) for this task. After creating a new file,
 called pipeline.py in the same directory, we import the important libraries.
 

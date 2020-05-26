@@ -4,6 +4,9 @@ having a task (eg. image classification) that needs to be done 20 times, using <
 
 ## Tutorial
 
+(Optional) For a finished tutorial for reference, find it here: https://github.com/trungATtechainer/MLChain-Full-Tutorial
+
+
 Let's use our <b> get_num() </b> function from [client.py](../Client/general.md) for this task. After creating 
 a new file, called <b> parallel.py</b> in the same directory, we import the important libraries. 
 

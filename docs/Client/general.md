@@ -13,7 +13,9 @@ First, follow the tutorial [here](../Model Deployment/tutorial.md) and deploy yo
 Next, create a file <b> client.py </b> any where on your computer. At the same time,
 download <a href="https://drive.google.com/u/6/uc?id=15wqHzVhFzbusivB7eHB0jWHlA1CIE-DF&export=download" target="_blank"> <b> this </b> </a> image to that folder.
 
-In that file, include the following code:
+(Optional) For a finished tutorial for reference, find it here: https://github.com/trungATtechainer/MLChain-Full-Tutorial
+
+In the <b> client.py </b> file, include the following code:
 
 ```python
 from mlchain.client import Client
@@ -47,12 +49,13 @@ In your terminal, running
 
     $ python client.py
 
-will return "res" as the model's response. 
+will return "res" as the model's response. Please ensure that you are already hosting your 
+app at localhost:5000 using the model deployment feature.
 
 This results in the output of 
 
 ```json
-{"output": 4, "time": 0.0}
+4
 ```
 
 
