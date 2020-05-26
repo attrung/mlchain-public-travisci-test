@@ -171,12 +171,12 @@ server: flask # option flask or grpc
 wrapper: None # option None or gunicorn
 cors: true
 gunicorn: # config apm-server if uses gunicorn wrapper
-timeout: 60
-keepalive: 60
-max_requests: 0
-threads: 1
-worker_class: 'gthread'
-umask: '0'
+    timeout: 60
+    keepalive: 60
+    max_requests: 0
+    threads: 1
+    worker_class: 'gthread'
+    umask: '0'
 ```
 
 [(Optional) Learn more about mlconfig file](../Model Deployment/mlconfig.md)
@@ -189,4 +189,4 @@ Test Image:
 Server Response:
 ![output](http://i.imgur.com/LN0xIUK.jpg)
 
-[Check Module Detail](../Model Deployment/moduleDetail.md)
+[Check Module Detail >>](../Model Deployment/moduleDetail.md)

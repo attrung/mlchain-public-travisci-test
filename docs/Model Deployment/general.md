@@ -29,4 +29,4 @@ mlchain run server.py --host localhost --port 5000
 
 and your website should be hosting at http://localhost:5000
 
-[Access full tutorial](../Model Deployment/tutorial.md)
+[Access full tutorial >>](../Model Deployment/tutorial.md)

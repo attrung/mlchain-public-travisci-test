@@ -1,9 +1,9 @@
 ## Introduction
 
-MLChain class Client allows you to pass your Machien Learning model's output seamlessly between different 
+MLChain class Client allows you to pass your Machine Learning model's output seamlessly between different 
 computers, servers, and so on.
 
-The below example uses MLChain client to make request from http://localhost:5000, that is hosted by ourself. 
+The below example uses MLChain client to make request from http://localhost:5000, that is hosted by ourselves. 
 In real examples, this can be any website url which contain our model.
 
 ## Tutorial
@@ -44,14 +44,21 @@ will return "res" as the model's response.
 In software development, we believe using this service allows programmers to better transfer AI models' final results and allowing 
 for more cooperation between programmers. This allows you to communicate without having to build complex API systems in the company.
 
-
-# TODO:
-Đoạn này em (Trung) đang k hiểu nó đang hoạt động thế nào ạ. Mai anh bảo em nhé.
 ### Sending requests to the REST API
-Now you can send request to this API.
+You can also send request to this API using the terminal.
 
 ```bash
-curl --location --request POST 'http://localhost:5000/call/predict' --form 'input=ok'
+curl -F "img=@19.png"  http://localhost:5000/call/image_predict
 ```
 
-for
+In the above example, we are having a request to the url http://localhost:5000/call/image_predict, 
+where our input form is our image under variable <i> img </i> (19.png). 
+
+This results in the output of 
+
+```json
+{"output": 4, "time": 0.0}
+```
+
+Which is our model's response for the image.
+

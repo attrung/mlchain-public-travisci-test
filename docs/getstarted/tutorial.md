@@ -3,6 +3,6 @@ quickstart tutorial to start building your app with MLChain right away.
 
 - [Model Deployment](../Model Deployment/tutorial.md)
 
-- [Client API](../Client/tutorial.md)
+- [Client API](../Client/general.md)
 
 - [Workflow](#workflow)
