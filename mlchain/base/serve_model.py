@@ -1,8 +1,5 @@
 from inspect import signature
-from mlchain.log import MLLogger
 import inspect
-import time
-import random
 from threading import Lock, Event
 import itertools
 import types
@@ -145,20 +142,18 @@ def batch(name, variables, default=None,variable_names = None, timeout=-1, max_q
 
 
 class ServeModel(object):
-    def __init__(self, model, name=None, deny_all_function=False, blacklist=[], whitelist=[], log=False, config=None):
+    def __init__(self, model, deny_all_function=False, blacklist=[], whitelist=[]):
         if isinstance(model, type):
             raise AssertionError("Your input model must be an instance")
 
         self.model = model
-        self.name = name or model.__class__.__name__
+        self.name = model.__class__.__name__
         self.all_serve_function = set()
         self.all_atrributes = set()
         self.threat = None
         blacklist_set = set(self._check_blacklist(deny_all_function, blacklist, whitelist))
         self._check_all_func(blacklist_set)
         self._check_all_attribute(blacklist_set)
-        self.log = log
-        self.config = config
 
     def is_alive(self):
         if self.threat is None:
@@ -324,13 +319,7 @@ class ServeModel(object):
                 # Normalize format of input
                 # Call function
                 self._valid_format_kwargs(kwargs, func_)
-                start = time.time()
                 output = func_(*args, **kwargs)
-                duration = time.time() - start
-                if random.random() < self.log:
-                    MLLogger.log_params(self.name, id_=id, function_name_=function_name,
-                                        meta_data_={'time': duration},
-                                        **kwargs, output=output)
         else:
             raise AssertionError("function_name must be str")
         return output
@@ -360,17 +349,11 @@ class ServeModel(object):
 
                 # Call function
                 self._valid_format_kwargs(kwargs, func_)
-                start = time.time()
                 if inspect.iscoroutinefunction(func_):
                     output = await func_(*args, **kwargs)
                 else:
                     output = func_(*args, **kwargs)
-                duration = time.time() - start
 
-                if random.random() < self.log:
-                    MLLogger.log_params(self.name, id=id, function_name=function_name,
-                                        meta_data={'time': duration},
-                                        **kwargs, output=output)
         else:
             raise AssertionError("function_name must be str")
         return output
