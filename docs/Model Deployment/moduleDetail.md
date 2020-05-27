@@ -2,7 +2,7 @@
 class ServeModel(object):
 
     def __init__(self, model, name=None, deny_all_function=False, 
-    blacklist=[], whitelist=[], log=False, config=None):
+    blacklist=[], whitelist=[]):
 ```
 
 ### Variables:
@@ -10,18 +10,12 @@ class ServeModel(object):
 - model (instance): The model instance that you defined, including general architecture and 
 accompanying function
 
-- name (str):
-
 - deny_all_function (bool): Do not return any route, except for those in whitelist
 (default: False)
 
 - blacklist (list): list of functions that are not used. Use with deny_all_function == False.
 
 - whitelist (list): list of functions that are always used. Use with deny_all_function == True.
-
-- log: (default: False)
-
-- config: (default: None)
 
 ### Example use:
 
@@ -54,3 +48,5 @@ serve_model = ServeModel(model, deny_all_function = True, whitelist = ['model', 
 
 return:
 ![image](../img/Model%20Deployment/whiteList.jpg)
+
+[Client Sharing >>](../Client/general.md)

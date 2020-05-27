@@ -17,7 +17,7 @@
 
 This Mlchain Python library lets you launch models and do many tasks with Mlchain Platform. 
 
-[Learn more](../getstarted/core_concepts.md)
+[Learn more](/getstarted/core_concepts.md)
 
 ### Seamless AI App Deployment
 
@@ -25,7 +25,7 @@ MLChain support you in building your own web-based AI application, where everyth
 for your comfort. You will be able to test your app without cumbersome software engineering work that takes 
 longer than training the data itself. 
 
-Try our tutorial on [Model Deployment](../Model Deployment/tutorial.md).
+Try our tutorial on [Model Deployment](/Model Deployment/tutorial.md).
 
 ### Sharing between clients
 
@@ -33,6 +33,12 @@ MLChain Client allows you to also share your AI model's output with regard to de
 This uses model that is directly hosted by your web-based app, so there is no need for rebuilding or 
 making cumbersome APIs.
 
-Try our tutorial on [Client Sharing](../Client/tutorial.md).
+Try our tutorial on [Client Sharing](/Client/general.md).
 
 ### Workflow
+
+Workflow is an independent function of MLChain that allows you to process your function 
+in a <b> parallel </b> or a <b> pipeline </b> manner. This uses multi thread processing without
+the need of complex DevOps programming, allowing your app to run multiple tasks 20 - 50 times faster than traditional approach.
+
+Learn more about [Workflow](/workflow/general.md)

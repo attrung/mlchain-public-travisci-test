@@ -23,6 +23,7 @@ pages:
         -  'Module Detail': Client/moduleDetail.md
 
     - Workflow:
+        - 'General': workflow/general.md
         - 'Parallel': workflow/parallel.md
         - 'Pipeline': workflow/pipeline.md
 

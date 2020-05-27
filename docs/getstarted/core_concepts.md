@@ -26,4 +26,8 @@ back to them every time they want to redeploy their model.
 [Read More...](../Client/general.md)
 
 ## Workflow
-...
+Workflow is an independent function of MLChain that allows you to process your function 
+in a <b> parallel </b> or a <b> pipeline </b> manner. This uses multi thread processing without
+the need of complex DevOps programming, allowing your app to run multiple tasks 20 - 50 times faster than traditional approach.
+
+[Read More...](/workflow/general.md)
