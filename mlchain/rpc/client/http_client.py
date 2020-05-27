@@ -6,7 +6,7 @@ from mlchain import logger
 TIMEOUT = httpx.Timeout(5 * 60)
 # TIMEOUT = httpx.Timeout()
 
-class Client(ClientBase):
+class HttpClient(ClientBase):
     """
     Mlchain Client Class
     """
@@ -93,7 +93,12 @@ class Client(ClientBase):
 
         if not self.check_response_ok(output):
             return self.__format_error(output)
-        
+        if output.status_code != 200:
+            if len(files) > 0:
+                output_decoded = self.json_serializer.decode(output.content)
+            else:
+                output_decoded = self.serializer.decode(output.content)
+            raise AssertionError("\nREMOTE API ERROR: {0}".format(output_decoded))
         if len(files) > 0:
             output_decoded = self.json_serializer.decode(output.content)
         else:

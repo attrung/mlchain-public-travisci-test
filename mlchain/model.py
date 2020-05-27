@@ -71,12 +71,7 @@ class RemoteFunction:
         if transaction:
             headers['Traceparent'] = transaction.trace_parent.to_string()
         output = self.client.post(url=self.url, input=input, files=files, headers=headers)
-
-        if 'error' in output:
-            with except_handler():
-                raise AssertionError("\nREMOTE API ERROR: {0}".format(output['error']))
-        else:
-            return output['output']
+        return output
 
 
 class AsyncRemoteFunction(RemoteFunction):
