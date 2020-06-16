@@ -1,7 +1,6 @@
 import os 
 import warnings
 from mlchain.base.serializer import JsonSerializer, MsgpackSerializer, MsgpackBloscSerializer, JpgMsgpackSerializer, PngMsgpackSerializer
-from mlchain.model import MlchainModel, AsyncMlchainModel
 import mlchain
 
 class ClientBase:
@@ -60,26 +59,6 @@ class ClientBase:
 
         self.content_type = 'application/{0}'.format(self.serializer_type)
         self.image_encoder = image_encoder
-
-    def model(self, name:str="", version:str="", check_status=True):
-        """
-        Remote model  
-        :client: Client to communicate, which can not be None
-        :name: Name of model 
-        :version: Version of model 
-        :check_status: Check model is exist or not, and get description of model 
-        """
-        return MlchainModel(self, name=name, version=version, check_status=check_status)
-
-    def async_model(self, name:str="", version:str="", check_status=True):
-        """
-        Remote model  
-        :client: Client to communicate, which can not be None
-        :name: Name of model 
-        :version: Version of model 
-        :check_status: Check model is exist or not, and get description of model 
-        """
-        return AsyncMlchainModel(self, name=name, version=version, check_status=check_status)
 
     def get(self):
         raise NotImplementedError

@@ -3,7 +3,7 @@ import grpc
 from mlchain.base.serializer import JsonSerializer, MsgpackSerializer, MsgpackBloscSerializer
 from ..server.protos import mlchain_pb2_grpc, mlchain_pb2
 from mlchain.observe.apm import get_transaction
-from mlchain.model import AsyncStorage
+from .async_utils import AsyncStorage
 
 
 class GrpcFunction:
@@ -40,7 +40,7 @@ class GrpcAsyncFunction(GrpcFunction):
 
 
 class GrpcModel:
-    def __init__(self, stub, serializer='msgpack', name='grpc_client', version='lastest', check_status=False):
+    def __init__(self, api_address, serializer='msgpack', check_status=False):
         """
         Remote model
         :client: Client to communicate, which can not be None
@@ -49,24 +49,13 @@ class GrpcModel:
         :check_status: Check model is exist or not, and get description of model
         """
 
-        self.name = name
-        self.version = version
         self.serializer = serializer
-        self.stub = stub
+        self.channel = grpc.insecure_channel(api_address)
+        self.stub = mlchain_pb2_grpc.MLChainServiceStub(self.channel)
 
         self.all_func_des = None
         self.all_func_params = None
-
-        if check_status:
-            output_description = self.client.get('{0}api/description'.format(self.pre_url))
-            if 'error' in output_description:
-                raise AssertionError("ERROR: Model {0} in version {1} is not found".format(name, version))
-            else:
-                output_description = output_description['output']
-                self.__doc__ = output_description['__main__']
-                self.all_func_des = output_description['all_func_des']
-                self.all_func_params = output_description['all_func_params']
-                self.all_attributes = output_description['all_attributes']
+        self.all_attributes = None
 
         self._cache = weakref.WeakValueDictionary()
         self.store_ = None
@@ -144,33 +133,3 @@ class GrpcAsyncModel(GrpcModel):
 
     def __hash__(self):
         return hash(self.client) + hash(self.name) + hash(self.version)
-
-
-class GrpcClient:
-    """
-    Mlchain Client Model Class
-    """
-
-    def __init__(self, api_address, serializer='msgpack'):
-        """
-        Remote model
-        :client: Client to communicate, which can not be None
-        :name: Name of model
-        :version: Version of model
-        :check_status: Check model is exist or not, and get description of model
-        """
-        self.serializer = serializer
-        self.channel = grpc.insecure_channel(api_address)
-        self.stub = mlchain_pb2_grpc.MLChainServiceStub(self.channel)
-
-        self.all_func_des = None
-        self.all_func_params = None
-
-        self._cache = weakref.WeakValueDictionary()
-
-    def model(self, name: str = "", version: str = "", check_status=True):
-        return GrpcModel(self.stub, serializer=self.serializer, name=name, version=version, check_status=check_status)
-
-    def async_model(self, name: str = "", version: str = "", check_status=True):
-        return GrpcAsyncModel(self.stub, serializer=self.serializer, name=name, version=version,
-                              check_status=check_status)

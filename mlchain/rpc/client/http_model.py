@@ -4,15 +4,15 @@ import uuid
 import os
 from mlchain.log import format_exc, except_handler
 from mlchain.observe.apm import get_transaction
-import time
-
+from .async_utils import AsyncStorage
+from .http_client import HttpClient
 
 class RemoteFunction:
     def __init__(self, client, url, name):
         """
         Remote Function Call
         :client: Client to communicate, which can not be None
-        :url: url to call 
+        :url: url to call
         """
         assert client is not None
 
@@ -79,7 +79,7 @@ class AsyncRemoteFunction(RemoteFunction):
         """
         Async Remote Function Call
         :client: Client to communicate, which can not be None
-        :url: url to call 
+        :url: url to call
         """
         RemoteFunction.__init__(self, client, url, name)
         self.is_async = True
@@ -91,83 +91,23 @@ class AsyncRemoteFunction(RemoteFunction):
         return RemoteFunction.__call__(self, *args, **kwargs)
 
 
-class AsyncStorage:
-    def __init__(self, function):
-        self.function = function
-
-    def get(self, key):
-        return AsyncResult(self.function(key))
-
-    def get_wait_until_done(self, key, timeout=100, interval=0.5):
-        start = time.time()
-        result = AsyncResult(self.function(key))
-        while not (result.is_success() or time.time() - start > timeout):
-            time.sleep(interval)
-            result = AsyncResult(self.function(key))
-        return result
-
-
-class AsyncResult:
-    def __init__(self, response):
-        self.response = response
-
-    @property
-    def output(self):
-        if 'output' in self.response:
-            return self.response['output']
-        else:
-            return None
-
-    @property
-    def status(self):
-        if 'status' in self.response:
-            return self.response['status']
-        else:
-            return None
-
-    @property
-    def time(self):
-        if 'time' in self.response:
-            return self.response['time']
-        else:
-            return 0
-
-    def is_success(self):
-        if self.status == 'SUCCESS':
-            return True
-        else:
-            return False
-
-    def json(self):
-        return self.response
-
-
-class MlchainModel:
+class HttpModel:
     """
     Mlchain Client Model Class
     """
 
-    def __init__(self, client, name, version='lastest', check_status=True):
+    def __init__(self,api_key = None, api_address = None, serializer='json', check_status=True):
         """
-        Remote model  
+        Remote model
         :client: Client to communicate, which can not be None
-        :name: Name of model 
-        :version: Version of model 
-        :check_status: Check model is exist or not, and get description of model 
+        :name: Name of model
+        :version: Version of model
+        :check_status: Check model is exist or not, and get description of model
         """
-        assert client is not None and isinstance(name, str) and isinstance(version, str)
 
-        self.client = client
-        self.name = name
-        self.version = version
+        self.client = HttpClient(api_key=api_key,api_address=api_address,serializer=serializer)
 
-        if len(self.name) == 0:
-            # Use original API addresss
-            self.pre_url = ""
-        else:
-            # Specific name and version 
-            self.pre_url = "{0}/{1}/".format(self.name, self.version)
-
+        self.pre_url = ""
         self.all_func_des = None
         self.all_func_params = None
 
@@ -175,9 +115,9 @@ class MlchainModel:
             output_description = self.client.get('{0}api/description'.format(self.pre_url))
             if 'error' in output_description:
                 with except_handler():
-                    raise AssertionError("ERROR: Model {0} in version {1} is not found".format(name, version))
+                    raise AssertionError("ERROR: Model {0} is not found".format(api_address))
             else:
-                output_description = output_description['output']
+                # output_description = output_description['output']
                 self.__doc__ = output_description['__main__']
                 self.all_func_des = output_description['all_func_des']
                 self.all_func_params = output_description['all_func_params']
@@ -214,7 +154,7 @@ class MlchainModel:
 
     def __getattr__(self, name):
         if name in self._cache:
-            true_function = self._cache[name]
+            return self._cache[name]
         else:
             if not self.__check_function(name):
                 if not self.__check_attribute(name) and not name.endswith('_async'):
@@ -229,80 +169,23 @@ class MlchainModel:
                 true_function = RemoteFunction(client=self.client, url='{0}call/{1}'.format(self.pre_url, name),
                                                name=name)
                 self._cache[name] = true_function
-
-        return true_function
+                return true_function
 
     def __eq__(self, other):
-        return self.client is other.client and self.name == other.name and self.version == other.version
+        return self.client is other.client
 
     def __hash__(self):
-        return hash(self.client) + hash(self.name) + hash(self.version)
+        return hash(self.client)
 
 
-class AsyncMlchainModel:
+class HttpAsyncModel(HttpModel):
     """
     Mlchain Client Model Class
     """
 
-    def __init__(self, client, name, version='lastest', check_status=True):
-        """
-        Remote model  
-        :client: Client to communicate, which can not be None
-        :name: Name of model 
-        :version: Version of model 
-        :check_status: Check model is exist or not, and get description of model 
-        """
-        assert client is not None and isinstance(name, str) and isinstance(version, str)
-
-        self.client = client
-        self.name = name
-        self.version = version
-
-        if len(self.name) == 0:
-            # Use original API addresss
-            self.pre_url = ""
-        else:
-            # Specific name and version 
-            self.pre_url = "{0}/{1}/".format(self.name, self.version)
-
-        self.all_func_des = None
-        self.all_func_params = None
-
-        if check_status:
-            output_description = self.client.get('{0}api/description'.format(self.pre_url))
-            if 'error' in output_description:
-                with except_handler():
-                    raise AssertionError("ERROR: Model {0} in version {1} is not found".format(name, version))
-            else:
-                output_description = output_description['output']
-                self.__doc__ = output_description['__main__']
-                self.all_func_des = output_description['all_func_des']
-                self.all_func_params = output_description['all_func_params']
-                self.all_attributes = output_description['all_attributes']
-
-        self._cache = weakref.WeakValueDictionary()
-
-    def __check_function(self, name):
-        if self.all_func_des is not None:
-            if name in self.all_func_des:
-                return True
-            else:
-                return False
-        else:
-            return True
-
-    def __check_attribute(self, name):
-        if self.all_attributes is not None:
-            if name in self.all_attributes:
-                return True
-            else:
-                return False
-        else:
-            return True
-
     def __getattr__(self, name):
         if name in self._cache:
-            true_function = self._cache[name]
+            return self._cache[name]
         else:
             if not self.__check_function(name):
                 if not self.__check_attribute(name) and not name.endswith('_async'):
@@ -313,12 +196,7 @@ class AsyncMlchainModel:
             else:
                 true_function = AsyncRemoteFunction(client=self.client, url='{0}call/{1}'.format(self.pre_url, name),
                                                     name=name)
-            self._cache[name] = true_function
+                self._cache[name] = true_function
 
-        return true_function
+                return true_function
 
-    def __eq__(self, other):
-        return self.client is other.client and self.name == other.name and self.version == other.version
-
-    def __hash__(self):
-        return hash(self.client) + hash(self.name) + hash(self.version)
