@@ -45,7 +45,7 @@ pages:
     #
     # {!redirect_message.md!}
     #
-theme: material
+theme: mkdocs
 extra:
   # Use this to make a section open by default in the sidebar. These names have
   # to match the titles in the `pages` section above. If a child section is
