@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: mlchain-test
+Version: 1.0.0
+Summary: MLchain Python Library
+Home-page: https://gitlab.com/techainer/ml_platform/mlchain-python
+Author: Techainer Inc.
+Author-email: admin@techainer.com
+License: UNKNOWN
+Description: Mlchain helps AI developers to easily run, deploy and monitor
+        AI models and Workflows without having Devops skills.
+        
+        This Mlchain Python library lets you launch models and do many
+        tasks with Mlchain Platform. Please sign up your account on
+        Mlchain before working with it.
+Keywords: mlchain,development,deployment ai,ai,artificial neural network,training,deploy,deployment,monitoring,model,deep learning,machine learning
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3
+Provides-Extra: core

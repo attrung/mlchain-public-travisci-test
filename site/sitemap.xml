@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+     <loc>https://docs.mlchain.com/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/getstarted/core_concepts/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/getstarted/installation/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/getstarted/tutorial/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Model Deployment/general/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Model Deployment/tutorial/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Model Deployment/moduleDetail/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Model Deployment/mlconfig/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Client/general/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/Client/moduleDetail/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/workflow/general/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/workflow/parallel/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/workflow/pipeline/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.mlchain.com/help/</loc>
+     <lastmod>2020-06-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>

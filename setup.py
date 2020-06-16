@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os
 from setuptools import setup, find_packages
-__version__ = "0.0.9h1"
+__version__ = "1.0.0"
 
-project = "mlchain"
+project = "mlchain-test"
 
 def readme():
     with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
@@ -51,10 +51,9 @@ setup(
     py_modules=['mlchain'],
     entry_points={"console_scripts": ["mlchain = mlchain.cli.main:main"]},
     classifiers=[
-        'Development Status :: 0.0.1 - Beta',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries',
-        'License :: MIT License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
